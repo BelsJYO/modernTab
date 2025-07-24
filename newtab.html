@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Background overlay -->
+        <div class="background-overlay"></div>
+        
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Time and date display -->
+            <div class="time-section">
+                <div class="time" id="current-time">12:00</div>
+                <div class="date" id="current-date">Monday, January 1</div>
+            </div>
+            
+            <!-- Search section -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search the web..." autocomplete="off">
+                    <button id="search-button" class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="search-engine-indicator" id="search-engine-indicator">
+                    <span id="current-search-engine">Google</span>
+                </div>
+            </div>
+            
+            <!-- Quick bookmarks -->
+            <div class="bookmarks-section">
+                <div class="bookmarks-grid" id="bookmarks-grid">
+                    <!-- Bookmarks will be dynamically populated -->
+                </div>
+                <button class="add-bookmark-btn" id="add-bookmark-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Settings button -->
+        <button class="settings-btn" id="settings-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V12a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+        </button>
+        
+        <!-- Settings modal -->
+        <div class="settings-modal" id="settings-modal">
+            <div class="settings-content">
+                <div class="settings-header">
+                    <h2>Settings</h2>
+                    <button class="close-btn" id="close-settings">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="settings-body">
+                    <!-- Search Engine Settings -->
+                    <div class="setting-group">
+                        <h3>Search Engine</h3>
+                        <select id="search-engine-select">
+                            <option value="google">Google</option>
+                            <option value="duckduckgo">DuckDuckGo</option>
+                            <option value="brave">Brave Search</option>
+                            <option value="bing">Bing</option>
+                            <option value="ecosia">Ecosia</option>
+                            <option value="startpage">Startpage</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <div class="custom-search-engine" id="custom-search-engine" style="display: none;">
+                            <input type="text" id="custom-search-name" placeholder="Search engine name">
+                            <input type="text" id="custom-search-url" placeholder="Search URL (use %s for query)">
+                        </div>
+                    </div>
+                    
+                    <!-- Background Settings -->
+                    <div class="setting-group">
+                        <h3>Background</h3>
+                        <div class="background-options">
+                            <label>
+                                <input type="radio" name="background-type" value="color" checked>
+                                Solid Color
+                            </label>
+                            <label>
+                                <input type="radio" name="background-type" value="gradient">
+                                Gradient
+                            </label>
+                            <label>
+                                <input type="radio" name="background-type" value="preset-gradient">
+                                Preset Gradients
+                            </label>
+                            <label>
+                                <input type="radio" name="background-type" value="image">
+                                Custom Image
+                            </label>
+                            <label>
+                                <input type="radio" name="background-type" value="preset-wallpaper">
+                                Preset Wallpapers
+                            </label>
+                        </div>
+                        
+                        <!-- Solid Color -->
+                        <div class="color-picker-container">
+                            <input type="color" id="background-color" value="#1a1a2e">
+                        </div>
+                        
+                        <!-- Custom Gradient -->
+                        <div class="gradient-picker-container" style="display: none;">
+                            <div class="gradient-controls">
+                                <div class="gradient-color-inputs">
+                                    <input type="color" id="gradient-color1" value="#1a1a2e">
+                                    <input type="color" id="gradient-color2" value="#16213e">
+                                </div>
+                                <div class="gradient-direction">
+                                    <label>Direction:</label>
+                                    <select id="gradient-direction">
+                                        <option value="135deg">Diagonal (↘)</option>
+                                        <option value="90deg">Vertical (↓)</option>
+                                        <option value="0deg">Horizontal (→)</option>
+                                        <option value="45deg">Diagonal (↗)</option>
+                                        <option value="180deg">Horizontal (←)</option>
+                                        <option value="270deg">Vertical (↑)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Preset Gradients -->
+                        <div class="preset-gradient-container" style="display: none;">
+                            <div class="preset-gradient-grid">
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" title="Purple Blue"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" title="Pink Red"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" title="Blue Cyan"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" title="Green Teal"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #fa709a 0%, #fee140 100%)" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" title="Pink Yellow"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);" title="Mint Pink"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);" title="Coral Pink"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);" title="Purple Pink"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);" title="Peach Orange"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);" title="Sky Blue"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%)" style="background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);" title="Gold Teal"></div>
+                                <div class="preset-gradient" data-gradient="linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%)" style="background: linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%);" title="Rose Pink"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Custom Image Upload -->
+                        <div class="image-upload-container" style="display: none;">
+                            <input type="file" id="background-image" accept="image/*">
+                            <div class="image-preview" id="image-preview" style="display: none;">
+                                <img id="preview-img" src="" alt="Preview">
+                                <button type="button" id="remove-image">Remove</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Preset Wallpapers -->
+                        <div class="preset-wallpaper-container" style="display: none;">
+                            <div class="preset-wallpaper-grid">
+                                <div class="preset-wallpaper" data-wallpaper="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop');" title="Mountain Lake"></div>
+                                <div class="preset-wallpaper" data-wallpaper="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=1080&fit=crop" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop');" title="Forest Path"></div>
+                                <div class="preset-wallpaper" data-wallpaper="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&h=1080&fit=crop" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop');" title="Ocean Waves"></div>
+                                <div class="preset-wallpaper" data-wallpaper="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop');" title="Desert Dunes"></div>
+                                <div class="preset-wallpaper" data-wallpaper="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&h=1080&fit=crop" style="background-image: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=300&fit=crop');" title="Space Stars"></div>
+                                <div class="preset-wallpaper" data-wallpaper="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop');" title="City Lights"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Theme Settings -->
+                    <div class="setting-group">
+                        <h3>Theme</h3>
+                        <select id="theme-select">
+                            <option value="dark">Dark</option>
+                            <option value="light">Light</option>
+                            <option value="auto">Auto</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Bookmark Customization -->
+                    <div class="setting-group">
+                        <h3>Bookmark Icons</h3>
+                        <div class="bookmark-icon-options">
+                            <label>
+                                <input type="radio" name="bookmark-icon-type" value="emoji" checked>
+                                Emoji Icons
+                            </label>
+                            <label>
+                                <input type="radio" name="bookmark-icon-type" value="letter">
+                                Letter Icons
+                            </label>
+                            <label>
+                                <input type="radio" name="bookmark-icon-type" value="favicon">
+                                Website Favicons
+                            </label>
+                        </div>
+                        <div class="bookmark-style-options">
+                            <label>Bookmark Style:</label>
+                            <select id="bookmark-style-select">
+                                <option value="rounded">Rounded</option>
+                                <option value="square">Square</option>
+                                <option value="circle">Circle</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-footer">
+                    <button class="save-btn" id="save-settings">Save Changes</button>
+                    <button class="reset-btn" id="reset-settings">Reset to Default</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add bookmark modal -->
+        <div class="bookmark-modal" id="bookmark-modal">
+            <div class="bookmark-content">
+                <div class="bookmark-header">
+                    <h2>Add Bookmark</h2>
+                    <button class="close-btn" id="close-bookmark">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="bookmark-body">
+                    <input type="text" id="bookmark-name" placeholder="Bookmark name">
+                    <input type="url" id="bookmark-url" placeholder="https://example.com">
+                </div>
+                
+                <div class="bookmark-footer">
+                    <button class="save-btn" id="save-bookmark">Add Bookmark</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/newtab.js"></script>
+</body>
+</html>
+
