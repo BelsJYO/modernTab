@@ -1,21 +1,19 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Modern New Tab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern, customizable new tab page with configurable search engines and quick bookmarks",
   
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ],
   
   "chrome_url_overrides": {
-    "newtab": "newtab_mtab_inspired.html"
+    "newtab": "newtab.html"
   },
   
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
   
   "icons": {
@@ -25,9 +23,15 @@
     "128": "icons/icon-128.png"
   },
   
-  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
   
   "web_accessible_resources": [
-    "assets/*"
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }
+
