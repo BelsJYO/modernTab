@@ -5,6 +5,8 @@ A modern, customizable new tab page extension for Firefox that provides a clean 
 ## Patches
 - **Version 1.0.0** --> Complete
 - **Version 1.0.1** --> Progressing ("full chrome support + animations, soon"!)
+- **Version 1.0.2** --> Allowing Memory saves + animations, added more personalisation.
+- **Version 1.0.3** --> NOT RELEASES (chrome support + visual bug fixes)
 - 
 ## Features
 
@@ -57,7 +59,7 @@ Then add the option to the select element in `newtab.html`.
 ## Browser Compatibility
 
 - **Firefox**: Fully supported (Manifest V2)
-- **Chrome/Edge**: Coming in Patch v1.0.1
+- **Chrome/Edge**: Coming in Patch v1.0.3
 
 ## Privacy
 
@@ -76,4 +78,11 @@ This extension:
 - Bookmark management
 - Theme support
 - Background customization
+
+## Version 1.0.2
+- Personalised welcome message
+- New functionalities
+- Animations
+- Memoey saves*
+
 
