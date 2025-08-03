@@ -6,7 +6,7 @@ A modern, customizable new tab page extension for Firefox that provides a clean 
 - **Version 1.0.0** --> Complete
 - **Version 1.0.1** --> Progressing ("full chrome support + animations, soon"!)
 - **Version 1.0.2** --> Allowing Memory saves + animations, added more personalisation.
-- **Version 1.0.3** --> NOT RELEASES (chrome support + visual bug fixes)
+- **Version 1.0.3** --> Released, go check it out on the firefox add-ons store,
 - 
 ## Features
 
@@ -85,4 +85,6 @@ This extension:
 - Animations
 - Memoey saves*
 
+## Version 1.0.3
+- Released in the firefox add-on store!
 
